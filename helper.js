@@ -195,7 +195,3 @@ $.fn.imageChange = function(mainElem) {
         });
     });
 }
-
-$(document).ready(function () {
-    $("h1").backToTop(500);
-});
