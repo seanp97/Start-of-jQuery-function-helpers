@@ -1,5 +1,3 @@
-
-
 $.fn.thisHeight = function() {
     thisHeight = $(this).height();
     return thisHeight;
@@ -126,8 +124,10 @@ $.fn.hasAttr = function(elemAttr) {
 $.fn.slider = function(childElem, slideSpeed) {
     $(this).on("click", function () {
         var prop = $(this).prop("tagName").toLowerCase();
-        var className = $(this).attr('class');
-        var idName = $(this).attr('class');
+        if ($(this).attr("class") != "" || $(this).attr("id") != "") {
+            var className = $(this).attr('class');
+            var idName = $(this).attr('class');
+        }
         $(this).find(childElem).slideToggle(slideSpeed);
         $(prop).not(this).find(childElem).slideUp(slideSpeed) || $(className).not(this).find(childElem).slideUp(slideSpeed) || $(idName).not(this).find(childElem).slideUp(slideSpeed);
     });
@@ -170,3 +170,6 @@ $.fn.widthSame = function() {
     $(this).css("width", initWidth);
 }
 
+$(document).ready(function () {
+    $("div").slider("p", 500);
+});
