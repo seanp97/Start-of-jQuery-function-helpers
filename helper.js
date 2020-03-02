@@ -1,4 +1,5 @@
 
+
 $.fn.thisHeight = function() {
     thisHeight = $(this).height();
     return thisHeight;
@@ -19,14 +20,25 @@ $.fn.thisCSS = function(style) {
     return thisCSS;
 }
 
+$.fn.isLowerCase = function() {
+    thisUpper = $(this).text();
+
+    if (thisUpper == thisUpper.toUpperCase()) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
 $.fn.isUpperCase = function() {
     thisUpper = $(this).text();
 
     if (thisUpper == thisUpper.toUpperCase()) {
-        return "Is uppercase";
+        return true;
     }
     else {
-        return "Not uppercase";
+        return false;
     }
 }
 
@@ -38,13 +50,91 @@ $.fn.isCapitals = function() {
     capsFullWord = firstLetter == firstLetter.toUpperCase() && restOfString == restOfString.toLowerCase();
 
     if (firstLetter == firstLetter.toUpperCase() && restOfString == restOfString.toLowerCase()) {
-        return "Capitals";
+        return true;
     }
     else {
-        return "Not capitals";
+        return false;
     }
 }
 
+$.fn.stringEmpty = function() {
+    if (this.text() == "") {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+//RGB colors only to check in arguement
+$.fn.isColor = function(elemColor) {
+    if ($(this).css("color") == elemColor) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+$.fn.isBackgroundColor = function(elemBGColor) {
+    if ($(this).css("background-color") == elemBGColor) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+$.fn.elemExists = function() {
+    if ($(this).length > 0) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+$.fn.inputVal = function() {
+    return $(this).val();
+}
+
+$.fn.elemAttr = function(elemAttr) {
+    return $(this).attr(elemAttr).split(/\s+/);
+}
+
+$.fn.keyCodePress = function(keyNumber) {
+    $(document).keyup(function (e){
+        if (e.keyCode == keyNumber) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    });
+}
+
+$.fn.hasAttr = function(elemAttr) {
+   if ($(this).attr(elemAttr).split(/\s+/).length > 0) {
+        return true;
+   }
+   else {
+       return false;
+   }
+}
 
 
+$.fn.slider = function(childElem, slideSpeed) {
+    $(this).on("click", function () {
+        $(this).find(childElem).slideToggle(slideSpeed);
+    });
+}
+
+$.fn.elemVisible = function() {
+    if ($(this).is(":hidden") || $(this).css("visibility") == "hidden") {
+        return false;
+    }
+    else {
+        return true;
+    }
+}
 
