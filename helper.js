@@ -138,3 +138,16 @@ $.fn.elemVisible = function() {
     }
 }
 
+$.fn.heightSame = function() {
+    var initHeight = 0;
+    var Temp = 0;
+    $(this).each(function () {
+        Temp = $(this).height();
+
+        if (Temp > initHeight) {
+            initHeight = Temp;
+        }
+    });
+
+    $(this).css("height", initHeight);
+}
