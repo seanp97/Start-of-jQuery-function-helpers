@@ -169,7 +169,3 @@ $.fn.widthSame = function() {
 
     $(this).css("width", initWidth);
 }
-
-$(document).ready(function () {
-    $("div").slider("p", 500);
-});
