@@ -188,10 +188,14 @@ $.fn.backToTop = function(speed) {
 }
 
 $.fn.imageChange = function(mainElem) {
-    $(element).each(function () {
+    $(this).each(function () {
         $(this).click(function () {
             var imgSRC = $(this).attr("src");
             $(mainElem).attr("src", imgSRC);
         });
     });
 }
+
+$(document).ready(function () {
+    $("h1").backToTop(500);
+});
