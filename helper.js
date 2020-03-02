@@ -190,7 +190,3 @@ $.fn.backToTop = function(speed) {
         $('html, body').animate({ scrollTop: 0 }, speed);
     });
 }
-
-$(document).ready(function () {
-    $("h1").backToTop(500);
-});
