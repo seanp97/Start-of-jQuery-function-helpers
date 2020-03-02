@@ -1,21 +1,17 @@
 $.fn.thisHeight = function() {
-    thisHeight = $(this).height();
-    return thisHeight;
+    return $(this).height();
 }
 
 $.fn.thisWidth = function() {
-    thisWid = $(this).width();
-    return thisWid;
+    return  $(this).width();
 }
 
 $.fn.thisText = function() {
-    thisT = $(this).text();
-    return thisT;
+    return $(this).text();
 }
 
 $.fn.thisCSS = function(style) {
-    thisCSS = $(this).css(style);
-    return thisCSS;
+    return $(this).css(style);
 }
 
 $.fn.isLowerCase = function() {
@@ -188,5 +184,14 @@ $.fn.hrefMatchURL = function() {
 $.fn.backToTop = function(speed) {
     $(this).click(function () {
         $('html, body').animate({ scrollTop: 0 }, speed);
+    });
+}
+
+$.fn.imageChange = function(mainElem) {
+    $(element).each(function () {
+        $(this).click(function () {
+            var imgSRC = $(this).attr("src");
+            $(mainElem).attr("src", imgSRC);
+        });
     });
 }
