@@ -169,3 +169,28 @@ $.fn.widthSame = function() {
 
     $(this).css("width", initWidth);
 }
+
+$.fn.getHREF = function() {
+    return $(this).attr("href");
+}
+
+$.fn.hrefMatchURL = function() {
+    var hrefURL = window.location.href;
+
+    if($(this).attr("href") == hrefURL) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+$.fn.backToTop = function(speed) {
+    $(this).click(function () {
+        $('html, body').animate({ scrollTop: 0 }, speed);
+    });
+}
+
+$(document).ready(function () {
+    $("h1").backToTop(500);
+});
