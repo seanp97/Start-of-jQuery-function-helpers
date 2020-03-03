@@ -248,6 +248,18 @@ $.fn.hrefMatchURL = function() {
     }
 }
 
+//topVal: 600 recommended
+$.fn.inViewport = function(topVal, viewClass) {
+    $(this).each(function() {
+        var thisPos = $(this).offset().top;
+        var winTop = $(window).scrollTop();
+
+        if (thisPos < winTop + topVal) {
+            $(this).addClass(viewClass);
+        }
+    });
+}
+
 $.fn.backToTop = function(speed) {
     $(this).click(function () {
         $('html, body').animate({ scrollTop: 0 }, speed);
