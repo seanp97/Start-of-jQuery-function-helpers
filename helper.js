@@ -148,6 +148,10 @@ $.fn.inputVal = function() {
     return $(this).val();
 }
 
+$.fn.winHREF = function() {
+    return window.location.href;
+}
+
 $.fn.elemAttr = function(elemAttr) {
     return $(this).attr(elemAttr).split(/\s+/);
 }
@@ -191,6 +195,14 @@ $.fn.elemVisible = function() {
     else {
         return true;
     }
+}
+
+$.fn.eachToggleClass = function(eventType, elemClass) {
+    $(this).each(function () {
+        $(this).on(eventType, function () {
+            $(this).toggleClass(elemClass);
+        });
+    });
 }
 
 $.fn.heightSame = function() {
