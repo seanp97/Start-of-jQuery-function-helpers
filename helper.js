@@ -223,7 +223,7 @@ $.fn.eachToggleClass = function(eventType, elemClass) {
     });
 }
 
-$.fn.heightSame = function() {
+$.fn.heightSameMax = function() {
     var initHeight = 0;
     var Temp = 0;
     $(this).each(function () {
@@ -237,13 +237,42 @@ $.fn.heightSame = function() {
     $(this).css("height", initHeight);
 }
 
-$.fn.widthSame = function() {
+
+$.fn.heightSameMin = function() {
+    var initHeight = 9999999;
+    var Temp = 0;
+    $(this).each(function () {
+        Temp = $(this).height();
+
+        if (Temp < initHeight) {
+            initHeight = Temp;
+        }
+    });
+
+    $(this).css("height", initHeight);
+}
+
+$.fn.widthSameMax = function() {
     var initWidth = 0;
     var Temp = 0;
     $(this).each(function () {
         Temp = $(this).width();
 
         if (Temp > initWidth) {
+            initWidth = Temp;
+        }
+    });
+
+    $(this).css("width", initWidth);
+}
+
+$.fn.widthSameMin = function() {
+    var initWidth = 9999999;
+    var Temp = 0;
+    $(this).each(function () {
+        Temp = $(this).width();
+
+        if (Temp < initWidth) {
             initWidth = Temp;
         }
     });
