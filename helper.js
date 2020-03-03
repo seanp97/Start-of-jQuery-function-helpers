@@ -10,6 +10,10 @@ $.fn.thisText = function() {
     return $(this).text();
 }
 
+$.fn.thisLength = function() {
+    return $(this).length;
+}
+
 $.fn.thisCSS = function(style) {
     return $(this).css(style);
 }
@@ -37,6 +41,24 @@ $.fn.thisNthPosition = function() {
 $.fn.thisXYPos = function() {
     var XYpos = $(this).position();
     return "Top position: " + XYpos.top + " Left position: " + XYpos.left;
+}
+
+$.fn.thisHeightCompare = function(x) {
+    if ($(this).height() > x) {
+        return "Elements height is bigger than " + x + "px";
+    }
+    else {
+        return "Elements height is smaller than " + x + "px";
+    }
+}
+
+$.fn.thisWidthCompare = function(x) {
+    if ($(this).width() > x) {
+        return "Elements width is bigger than " + x + "px";
+    }
+    else {
+        return "Elements width is smaller than " + x + "px";
+    }
 }
 
 $.fn.hasNoChildren = function() {
@@ -148,10 +170,6 @@ $.fn.inputVal = function() {
     return $(this).val();
 }
 
-$.fn.winHREF = function() {
-    return window.location.href;
-}
-
 $.fn.elemAttr = function(elemAttr) {
     return $(this).attr(elemAttr).split(/\s+/);
 }
@@ -249,6 +267,7 @@ $.fn.hrefMatchURL = function() {
 }
 
 //topVal: 600 recommended
+//Window scroll function
 $.fn.inViewport = function(topVal, viewClass) {
     $(this).each(function() {
         var thisPos = $(this).offset().top;
@@ -271,6 +290,20 @@ $.fn.imageChange = function(mainElem) {
         $(this).click(function () {
             var imgSRC = $(this).attr("src");
             $(mainElem).attr("src", imgSRC);
+        });
+    });
+}
+
+$.fn.paginationStyle = function(pagClass) {
+    $(this).each(function () {
+        $(this).click(function () {
+            var tagProp = $(this).prop("tagName").toLowerCase();
+            if ($(this).attr("class") != "" || $(this).attr("id") != "") {
+                var className = $(this).attr('class');
+                var idName = $(this).attr('class');
+            }
+            $(this).addClass(pagClass);
+            $(tagProp).not(this).removeClass(pagClass) || $(className).not(this).removeClass(pagClass) || $(idName).not(this).removeClass(pagClass);
         });
     });
 }
