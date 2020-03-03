@@ -3,7 +3,7 @@ $.fn.thisHeight = function() {
 }
 
 $.fn.thisWidth = function() {
-    return  $(this).width();
+    return $(this).width();
 }
 
 $.fn.thisText = function() {
@@ -12,6 +12,48 @@ $.fn.thisText = function() {
 
 $.fn.thisCSS = function(style) {
     return $(this).css(style);
+}
+
+$.fn.thisOuterWidth = function() {
+    return $(this).outerWidth();
+}
+
+$.fn.thisOuterHeight = function() {
+    return $(this).outerHeight();
+}
+
+$.fn.thisInnerWidth = function() {
+    return $(this).innerWidth();
+}
+
+$.fn.thisInnerHeight = function() {
+    return $(this).innerHeight();
+}
+
+$.fn.thisNthPosition = function() {
+    return $(this).index();
+}
+
+$.fn.thisXYPos = function() {
+    var XYpos = $(this).position();
+    return "Top position: " + XYpos.top + " Left position: " + XYpos.left;
+}
+
+$.fn.hasNoChildren = function() {
+    if($(this).children().length == 0) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+$.fn.elemPadding = function() {
+    return "Padding: " + $(this).css("padding");
+}
+
+$.fn.elemMargin = function() {
+    return "Margin: " +  $(this).css("margin");
 }
 
 $.fn.isLowerCase = function() {
@@ -51,7 +93,20 @@ $.fn.isCapitals = function() {
     }
 }
 
-$.fn.stringEmpty = function() {
+$.fn.getImgSrc = function() {
+    return $(this).attr("img");
+}
+
+$.fn.fadeInOutScroll = function(fadeValue) {
+    if ($(window).scrollTop() > fadeValue) {
+        $(this).fadeIn();
+    }
+    else {
+        $(this).fadeOut();
+    }
+}
+
+$.fn.textEmpty = function() {
     if (this.text() == "") {
         return true;
     }
@@ -70,6 +125,7 @@ $.fn.isColor = function(elemColor) {
     }
 }
 
+//RGB colors only to check in arguement
 $.fn.isBackgroundColor = function(elemBGColor) {
     if ($(this).css("background-color") == elemBGColor) {
         return true;
@@ -96,6 +152,15 @@ $.fn.elemAttr = function(elemAttr) {
     return $(this).attr(elemAttr).split(/\s+/);
 }
 
+$.fn.hasAttr = function(elemAttr) {
+    if ($(this).attr(elemAttr).split(/\s+/).length > 0) {
+         return true;
+    }
+    else {
+        return false;
+    }
+ }
+
 $.fn.keyCodePress = function(keyNumber) {
     $(document).keyup(function (e){
         if (e.keyCode == keyNumber) {
@@ -106,16 +171,6 @@ $.fn.keyCodePress = function(keyNumber) {
         }
     });
 }
-
-$.fn.hasAttr = function(elemAttr) {
-   if ($(this).attr(elemAttr).split(/\s+/).length > 0) {
-        return true;
-   }
-   else {
-       return false;
-   }
-}
-
 
 $.fn.slider = function(childElem, slideSpeed) {
     $(this).on("click", function () {
