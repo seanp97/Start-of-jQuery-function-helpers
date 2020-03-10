@@ -79,9 +79,9 @@ $.fn.elemMargin = function() {
 }
 
 $.fn.isLowerCase = function() {
-    thisUpper = $(this).text();
+    var thisLower = $(this).text();
 
-    if (thisUpper == thisUpper.toUpperCase()) {
+    if (thisLower == thisLower.toLowerCase()) {
         return true;
     }
     else {
@@ -90,7 +90,7 @@ $.fn.isLowerCase = function() {
 }
 
 $.fn.isUpperCase = function() {
-    thisUpper = $(this).text();
+    var thisUpper = $(this).text();
 
     if (thisUpper == thisUpper.toUpperCase()) {
         return true;
@@ -335,4 +335,17 @@ $.fn.paginationStyle = function(pagClass) {
             $(tagProp).not(this).removeClass(pagClass) || $(className).not(this).removeClass(pagClass) || $(idName).not(this).removeClass(pagClass);
         });
     });
+}
+
+//Next 2 functions. Element must be position: absolute
+$.fn.elemCenterVert = function(elem) {
+    var elHeight = $(elem).height() / 2;
+    var thisHeight = $(this).height() / 2;
+    $(this).css("top", (elHeight - thisHeight));
+}
+
+$.fn.elemCenterHori = function(elem) {
+    var elWidth = $(elem).width() / 2;
+    var thisWidth = $(this).height() / 2;
+    $(this).css("left", (elWidth - thisWidth));
 }
