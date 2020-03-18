@@ -1,3 +1,21 @@
+function rgb2hex(rgb) {
+    rgb = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+    function hex(x) {
+        return ("0" + parseInt(x).toString(16)).slice(-2);
+    }
+    return "#" + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
+}
+
+$.fn.thisBGColor = function() {
+    var BGcolor = $(this).css("background-color");
+    return rgb2hex(BGcolor);
+}
+
+$.fn.thisColor = function() { 
+    var ThisColor = $(this).css("color");
+    return rgb2hex(ThisColor);
+}
+
 $.fn.thisHeight = function() {
     return $(this).height();
 }
@@ -337,7 +355,7 @@ $.fn.paginationStyle = function(pagClass) {
     });
 }
 
-//Next 2 functions. Element must be position: absolute
+//Next 3 functions. Element must be position: absolute
 $.fn.elemCenterVert = function(elem) {
     var elHeight = $(elem).height() / 2;
     var thisHeight = $(this).height();
@@ -354,4 +372,30 @@ $.fn.elemCenterHori = function(elem) {
     var elWidth = $(elem).width() / 2;
     var thisWidth = $(this).width();
     $(this).css("left", (elWidth - (thisWidth / 2)));
+}
+
+$.fn.upperCaseFirstWord = function() {
+    var firstLetter = $(this).text().substring(0, 1);
+    var textLen = $(this).text().length;
+    var restOfString = $(this).text().substring(1, textLen);
+    $(this).text(firstLetter.toUpperCase() + restOfString);
+}
+
+$.fn.lowerCaseFirstWord = function() {
+    var firstLetter = $(this).text().substring(0, 1);
+    var textLen = $(this).text().length;
+    var restOfString = $(this).text().substring(1, textLen);
+    $(this).text(firstLetter.toLowerCase() + restOfString);
+}
+
+$.fn.normalizeSentence = function() {
+    var firstLetter = $(this).text().substring(0, 1);
+    var textLen = $(this).text().length;
+    var restOfString = $(this).text().substring(1, textLen);
+    $(this).text(firstLetter.toUpperCase() + restOfString.toLowerCase());
+}
+
+$.fn.addPunc = function(Punc) {
+    var thisSentence = $(this).text();
+    $(this).text(thisSentence + Punc);
 }
