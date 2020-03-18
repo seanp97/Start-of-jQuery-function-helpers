@@ -340,12 +340,18 @@ $.fn.paginationStyle = function(pagClass) {
 //Next 2 functions. Element must be position: absolute
 $.fn.elemCenterVert = function(elem) {
     var elHeight = $(elem).height() / 2;
-    var thisHeight = $(this).height() / 2;
-    $(this).css("top", (elHeight - thisHeight));
+    var thisHeight = $(this).height();
+    $(this).css("top", (elHeight - (thisHeight / 2)));
+}
+
+$.fn.elemCenterVertBottom = function(elem) {
+    var elVertWid = $(elem).height() / 2;
+    var thisHeight = $(this).height();
+    $(this).css("bottom", (elVertWid - (thisHeight / 2)));
 }
 
 $.fn.elemCenterHori = function(elem) {
     var elWidth = $(elem).width() / 2;
-    var thisWidth = $(this).height() / 2;
-    $(this).css("left", (elWidth - thisWidth));
+    var thisWidth = $(this).width();
+    $(this).css("left", (elWidth - (thisWidth / 2)));
 }
